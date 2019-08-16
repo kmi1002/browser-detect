@@ -84,7 +84,7 @@ class Parser implements ParserInterface
         $key = $this->key($agent);
 
         if ( ! isset($this->runtime[$key])) {
-            $this->runtime[$key] = $this->cache->remember($key, 10080, function () use ($agent) {
+            $this->runtime[$key] = $this->cache->remember($key, config('browser-detect.expired_at'), function () use ($agent) {
                 return $this->process($agent);
             });
         }
