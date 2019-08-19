@@ -23,6 +23,10 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
+        $this->publishes([
+            __DIR__.'/config/browser-detect.php' => config_path('browser-detect.php'),
+        ]);
+
         $this->registerDirectives();
     }
 
